@@ -18,5 +18,9 @@
         android:id="@+id/addBill"
         android:name="cm.lobe.loic.expensetracker.bill.AddBill"
         android:label="add_bill_fragment"
-        tools:layout="@layout/add_bill_fragment" />
+        tools:layout="@layout/add_bill_fragment" >
+        <action
+            android:id="@+id/action_addBill_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>

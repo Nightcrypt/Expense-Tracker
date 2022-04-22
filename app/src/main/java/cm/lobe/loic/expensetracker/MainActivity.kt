@@ -3,6 +3,7 @@ package cm.lobe.loic.expensetracker
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import cm.lobe.loic.expensetracker.databinding.ActivityMainBinding
 
@@ -21,6 +22,7 @@ class MainActivity : AppCompatActivity() {
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
         navController = navHostFragment!!.findNavController()
+
     }
 
     override fun onSupportNavigateUp(): Boolean {
