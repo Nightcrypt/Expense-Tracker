@@ -6,15 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import cm.lobe.loic.expensetracker.R
+import cm.lobe.loic.expensetracker.Utils.Result
 import cm.lobe.loic.expensetracker.databinding.AddBillFragmentBinding
 import cm.lobe.loic.expensetracker.home.TransactionViewModel
 import cm.lobe.loic.expensetracker.model.TransactionModel
+import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class AddBill : Fragment() {
 
     companion object {
@@ -37,17 +41,18 @@ class AddBill : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val title = binding.txtTitre.text.toString()
-        val price = binding.txtMontant.text.toString()
 //        val tag = binding.autoCompleteTag.text
         val tag = "Enoe"
         val type = 0
         val date = "date"
 
         binding.btnAddTransaction.setOnClickListener {
-            if(title.isEmpty() ||
-                    price.isEmpty()){
+            val title = binding.txtTitre.text.toString()
+            val price = binding.txtMontant.text.toString()
+
+            println("title : $title")
+            println("Montant : $price")
+            if(title.isEmpty() || price.isEmpty()){
                 Toast.makeText(requireContext(), "Remplir les donnees", Toast.LENGTH_LONG).show()
 
             }else{
@@ -61,8 +66,19 @@ class AddBill : Fragment() {
                         date = date
                     )
                 )
-                Toast.makeText(requireContext(), "Donnees enregistress", Toast.LENGTH_LONG).show()
-                findNavController().navigate(R.id.action_addBill_to_homeFragment)
+                transactionViewModel.taskCompleted.observe(viewLifecycleOwner, Observer {
+                    when(it){
+                        is Result.Loading -> {
+
+                        }
+                        is Result.Error -> {
+
+                        }
+                        is Result.Success -> {
+                            Toast.makeText(requireContext(), "Transaction Ajoutee", Toast.LENGTH_LONG).show()
+                        }
+                    }
+                })
             }
         }
 
@@ -71,7 +87,6 @@ class AddBill : Fragment() {
         }
 
     }
-
     override fun onDestroy() {
         super.onDestroy()
         _binding = null

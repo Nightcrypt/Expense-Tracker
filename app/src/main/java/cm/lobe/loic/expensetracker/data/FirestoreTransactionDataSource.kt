@@ -10,26 +10,22 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 
-class TransactionDataSource {
 
-    private val firestore = FirebaseFirestore.getInstance()
+interface TransactionDataSource {
 
-    suspend fun getAllTransaction() : List<TransactionModel>{
-        /*return try{
-            transactionCollection.get().await().toObjects(TransactionModel::class.java)
-        }*/
-        /*return withContext(Dispatchers.IO){
-            safeCall {
-                val task = firestore
-                    .collection(TRANSACTION_COLLECTION)
-                    .get()
-                val snapshot = Tasks.await(task, 20, TimeUnit.SECONDS)
-                val transaction = snapshot.documents.map { parseTransaction(it)}.sortedBy { it.date }
-                Result.success(transaction)
-            }
-            }
-*/
+    suspend fun getAllTransaction() : List<TransactionModel>
+
+    suspend fun saveTransaction(transactionModel: TransactionModel) : Boolean
+}
+
+class FirestoreTransactionDataSource @Inject constructor(
+    val firestore: FirebaseFirestore
+) : TransactionDataSource{
+
+    override suspend fun getAllTransaction() : List<TransactionModel>{
+
         val transactionList = withContext(Dispatchers.IO){
             val task = firestore
                 .collection(TRANSACTION_COLLECTION)
@@ -40,13 +36,12 @@ class TransactionDataSource {
             return transactionList
         }
 
-    suspend fun saveTransaction(transactionModel: TransactionModel) : Boolean{
-        return withContext(Dispatchers.IO){
-            val task = firestore
-                .collection(TRANSACTION_COLLECTION)
-                .add(transactionModel)
-            task.isSuccessful
-        }
+    override suspend fun saveTransaction(transactionModel: TransactionModel) : Boolean{
+        val task = firestore
+            .collection(TRANSACTION_COLLECTION)
+            .add(transactionModel)
+
+        return  task.isSuccessful
     }
 
     private fun parseTransaction(snapshot: DocumentSnapshot) : TransactionModel{

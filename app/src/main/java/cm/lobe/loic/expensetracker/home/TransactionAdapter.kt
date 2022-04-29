@@ -5,8 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import cm.lobe.loic.expensetracker.databinding.TransactionItemBinding
 import cm.lobe.loic.expensetracker.model.TransactionModel
+import javax.inject.Inject
 
-class TransactionAdapter : RecyclerView.Adapter<TransactionItemViewHolder>() {
+class TransactionAdapter @Inject constructor(): RecyclerView.Adapter<TransactionItemViewHolder>() {
 
     private var listOfTransaction = mutableListOf<TransactionModel>()
 
