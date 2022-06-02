@@ -26,9 +26,8 @@ class TransactionAdapter @Inject constructor(): RecyclerView.Adapter<Transaction
     override fun onBindViewHolder(holder: TransactionItemViewHolder, position: Int) {
         val transactionItem = listOfTransaction[position]
 
-        holder.binding.txtTitleTransaction.text = transactionItem.title
         holder.binding.txtPriceTransaction.text = transactionItem.price
-        holder.binding.txtTagTransaction.text = transactionItem.tag
+        holder.binding.txtCategoryTransaction.text = transactionItem.category
     }
 
     override fun getItemCount(): Int {

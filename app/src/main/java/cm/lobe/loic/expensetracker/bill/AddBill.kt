@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
@@ -17,6 +19,7 @@ import cm.lobe.loic.expensetracker.home.TransactionViewModel
 import cm.lobe.loic.expensetracker.model.TransactionModel
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.*
 
 @AndroidEntryPoint
 class AddBill : Fragment() {
@@ -42,27 +45,25 @@ class AddBill : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 //        val tag = binding.autoCompleteTag.text
-        val tag = "Enoe"
+        val category = "Enoe"
         val type = 0
         val date = "date"
 
+
         binding.btnAddTransaction.setOnClickListener {
-            val title = binding.txtTitre.text.toString()
             val price = binding.txtMontant.text.toString()
 
-            println("title : $title")
             println("Montant : $price")
-            if(title.isEmpty() || price.isEmpty()){
+            if( price.isEmpty()){
                 Toast.makeText(requireContext(), "Remplir les donnees", Toast.LENGTH_LONG).show()
 
             }else{
                 transactionViewModel.saveTransaction(
                     TransactionModel(
                         id = "",
-                        title = title,
                         price = price,
                         type = type,
-                        tag = tag,
+                        category = category,
                         date = date
                     )
                 )
@@ -87,6 +88,16 @@ class AddBill : Fragment() {
         }
 
     }
+
+    override fun onResume() {
+        super.onResume()
+//
+//        //liste pour le choix des categories
+//        val categories = resources.getStringArray(R.array.category)
+//        val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_transaction_category)
+//        binding.autoCompleteTransactionCategory.setAdapter(arrayAdapter)
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         _binding = null

@@ -62,7 +62,6 @@
                 android:id="@+id/constraintLayout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:background="@color/white"
                 android:orientation="vertical"
                 android:padding="30dp"
@@ -72,6 +71,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
+                    style="@style/SubTitleTextStyle"
                     android:id="@+id/textView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -90,6 +90,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView2">
 
                     <TextView
+                        style="@style/TitleTextStyle"
                         android:id="@+id/txt_total_balance"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -98,9 +99,10 @@
                         android:textColorHint="@color/black" />
 
                     <TextView
+                        style="@style/TitleTextStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text=" FCFA"
+                        android:text=" XFA"
                         android:textColor="@color/black" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
@@ -113,10 +115,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="8dp"
                 android:background="@color/white"
                 android:orientation="vertical"
-                android:padding="16dp"
+                android:padding="8dp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline6"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="@+id/guideline4"
@@ -124,27 +126,30 @@
 
                 <ImageView
                     android:id="@+id/imageView"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
                     android:background="@drawable/circular_bg"
                     android:backgroundTint="@color/light_green"
-                    android:padding="8dp"
+                    android:padding="3dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/ic_baseline_arrow_downward_24"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="@+id/linearLayoutCompat"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView4"
                     app:tint="@color/green" />
 
                 <TextView
+                    style="@style/SubTitleTextStyle"
                     android:id="@+id/textView4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="5dp"
                     android:text="Total Entrees"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView" />
+                    app:layout_constraintStart_toEndOf="@+id/imageView"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/linearLayoutCompat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -153,12 +158,14 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView4">
 
                     <TextView
+                        style="@style/TitleTextStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="+ "
                         android:textColor="@color/black" />
 
                     <TextView
+                        style="@style/TitleTextStyle"
                         android:id="@+id/txt_entree"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -167,9 +174,10 @@
                         android:textColorHint="@color/black" />
 
                     <TextView
+                        style="@style/TitleTextStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text=" FCFA"
+                        android:text=" XAF"
                         android:textColor="@color/black" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
@@ -179,11 +187,11 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
+                android:padding="8dp"
                 android:background="@color/white"
                 android:orientation="vertical"
-                android:padding="16dp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline5"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="@+id/guideline6"
@@ -191,27 +199,30 @@
 
                 <ImageView
                     android:id="@+id/imageView2"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
                     android:background="@drawable/circular_bg"
                     android:backgroundTint="@color/light_red"
-                    android:padding="8dp"
                     android:scaleType="centerCrop"
+                    android:padding="3dp"
                     android:src="@drawable/ic_baseline_arrow_upward_24"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="@+id/linearLayoutCompat2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/depenses"
                     app:tint="@color/red" />
 
                 <TextView
+                    style="@style/SubTitleTextStyle"
                     android:id="@+id/depenses"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="Total Depenses"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+                    android:layout_marginStart="5dp"
+                    android:text="Total Depences"
+                    app:layout_constraintStart_toEndOf="@+id/imageView2"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/linearLayoutCompat2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -220,12 +231,14 @@
                     app:layout_constraintTop_toBottomOf="@+id/depenses">
 
                     <TextView
+                        style="@style/TitleTextStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="+ "
                         android:textColor="@color/black" />
 
                     <TextView
+                        style="@style/TitleTextStyle"
                         android:id="@+id/txt_depenses"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -234,9 +247,10 @@
                         android:textColorHint="@color/black" />
 
                     <TextView
+                        style="@style/TitleTextStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text=" FCFA"
+                        android:text=" XFA"
                         android:textColor="@color/black" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
@@ -245,23 +259,35 @@
 
             <TextView
                 android:id="@+id/textView3"
+                style="@style/TitleTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="24dp"
                 android:text="Transactions Recentes"
                 app:layout_constraintStart_toStartOf="@+id/guideline4"
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
 
+            <TextView
+                style="@style/defaultTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Voir Tout"
+                app:layout_constraintBottom_toBottomOf="@+id/textView3"
+                app:layout_constraintEnd_toStartOf="@+id/guideline5"
+                app:layout_constraintTop_toTopOf="@+id/textView3" />
+
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_transaction_item"
+                android:id="@+id/rvTransactionItem"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                tools:listitem="@layout/transaction_item"
-                tools:itemCount="1"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline5"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/guideline4"
-                app:layout_constraintTop_toBottomOf="@+id/textView3" />
+                app:layout_constraintTop_toBottomOf="@+id/textView3"
+                app:layout_constraintVertical_bias="1.0"
+                tools:itemCount="1"
+                tools:listitem="@layout/transaction_item" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline6"
@@ -284,7 +310,6 @@
                 android:orientation="vertical"
                 app:layout_constraintGuide_percent="0.95" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     </androidx.core.widget.NestedScrollView>
 

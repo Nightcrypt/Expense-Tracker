@@ -14,6 +14,16 @@
         <!-- Customize your theme here. -->
     </style>
 
+
+    <!--    Ville : Classes par order alphabetique -->
+    <string-array name="category">
+        <item>Vetements</item>
+        <item>Restaurants</item>
+        <item>Carburant</item>
+        <item>Cadeaux</item>
+        <item>Vacances</item>
+    </string-array>
+
     <!--    Style pour le texte par defaut -->
     <style name="defaultTextStyle">
         <item name="android:textColor">@color/colorDarkGrey</item>

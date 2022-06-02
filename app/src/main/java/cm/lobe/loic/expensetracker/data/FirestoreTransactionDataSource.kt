@@ -47,22 +47,19 @@ class FirestoreTransactionDataSource @Inject constructor(
     private fun parseTransaction(snapshot: DocumentSnapshot) : TransactionModel{
         return  TransactionModel(
             id = snapshot.id,
-            title = snapshot[TITLE] as? String ?: "",
             price = snapshot[PRICE] as? String ?: "",
             type = (snapshot[TYPE] as? Long ?: 0).toInt(),
-            tag = snapshot[TAG] as? String ?: "",
+            category = snapshot[CATEGORY] as? String ?: "",
             date = snapshot[DATE] as? String ?: "",
-
         )
     }
     companion object{
         const val TRANSACTION_COLLECTION = "transactions"
         const val ID = "id"
-        const val TITLE = "title"
         const val PRICE = "price"
         //    0 --> depenses, 1--> entree
         const val TYPE = "price"
-        const val TAG = "tag"
+        const val CATEGORY = "category"
         const val DATE = "date"
     }
 }
